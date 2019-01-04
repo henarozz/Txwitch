@@ -43,7 +43,7 @@ Configuration
 ---------------
 ### settings.php
 Set your personal Developer Twitch Client ID (you can find it on dev.twitch.tv)
-```
+```php
 ...
 // Twitch API settings
         'twitch' => [
@@ -52,7 +52,7 @@ Set your personal Developer Twitch Client ID (you can find it on dev.twitch.tv)
 ```
 
 Set application authentication credentials
-```
+```php
 ...
 // App auth credentials
         'authCredentials' => [
