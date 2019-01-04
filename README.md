@@ -61,6 +61,34 @@ Set application authentication credentials
         ],
 ...
 ```
+### nginx.twitchhls.conf
+```nginx
+upstream php56-fpm {
+        server 127.0.0.1:9000;
+}
+server {
+        listen 80;
+
+        root /Users/macos/Projects/twitchhls/public;
+
+        index index.php index.html index.htm;
+
+        server_name twitchhls.local;
+
+        location / {
+                try_files $uri /index.php$is_args$args;
+        }
+
+        location ~ \.php$ {
+                #try_files $uri =404;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                include fastcgi.conf;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+                fastcgi_pass php56-fpm;
+        }
+}
+```
 
 ![alt text](https://dl.dropboxusercontent.com/s/kbpec5te8dzi6dl/twitchhls_games.png)
 ![alt text](https://dl.dropboxusercontent.com/s/xv5lmreubo3prfg/twitchhls_streams.png)
