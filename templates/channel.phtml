@@ -1,0 +1,41 @@
+<?php 
+/** @var Twitchhls\Model\Channel $channel */
+/** @var $channel Twitchhls\Model\Channel */
+?>
+
+<?php include '_layouts/header.phtml'; ?>
+
+<a href="/games">Home</a> <a href="javascript:window.history.back()">Back</a> <a href="/app/logout" style="float: right">Logout</a>
+
+<?php if (!empty ($header)) : ?>
+    <h1><?php echo (htmlspecialchars($header)); ?></h1>
+<?php else: ?>
+    <h1>Channel</a></h1>
+<?php endif; ?>
+
+<script>
+    function copyToClipboard(value) {
+        var tempInput = document.createElement("input");
+        tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+        tempInput.value = value;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+    }
+</script>
+
+<img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_<?php echo $channel->getName(); ?>-640x360.jpg" border="0"/>
+
+<ul style="padding: 0px">
+    <?php foreach ($channel->getPlaylist() as $video) : ?>
+        <li>
+            <a href="<?php echo $video['uri']; ?>" target="_blank"><small><?php echo $video['uri']; ?></small></a><br>
+            <pre><?php echo $video['inf'][2]; ?>, <?php echo $video['inf'][5]; ?></pre>
+			<button onclick="copyToClipboard('<?php echo $video['uri']; ?>')">Copy to clipboard</button>
+			<br/><br/>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<?php include '_layouts/footer.phtml'; ?>

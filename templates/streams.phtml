@@ -1,0 +1,77 @@
+<?php
+/** @var Twitchhls\Model\Stream $stream */
+/** @var $stream Twitchhls\Model\Stream */
+?>
+
+<?php include '_layouts/header.phtml'; ?>
+
+<a href="/games">Home</a> <a href="javascript:window.history.back()">Back</a> <a href="/app/logout" style="float: right">Logout</a>
+
+<?php if (!empty ($header)) : ?>
+    <h1><?php echo (htmlspecialchars($header)); ?></h1>
+<?php else: ?>
+    <h1>Live Streams</a></h1>
+<?php endif; ?>
+
+<script>
+    function likeDislike(channelName, userId) {
+        var el = document.getElementById(userId);
+        if (el.classList.contains('is-notliked')) {
+            var urlAction = '/channel/like?user_channel=' + channelName + '&user_id=' + userId;
+        }
+        if (el.classList.contains('is-liked')) {
+            var urlAction = '/channel/dislike?user_channel=' + channelName;
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', urlAction, true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                // log error
+                // alert('xhr.status + ': ' + xhr.statusText);
+            } else {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.data.responseMessage == 'Liked') {
+                        el.children[0].setAttribute('src', '/assets/img/icon-heart-solid@2x.png');
+                        el.classList.remove('is-notliked');
+                        el.classList.add('is-liked');
+                    }
+                    if (response.data.responseMessage == 'Disliked') {
+                        el.children[0].setAttribute('src', '/assets/img/icon-heart-regular@2x.png');
+                        el.classList.remove('is-liked');
+                        el.classList.add('is-notliked');
+                        //alert(response.data.responseMessage);
+                    }
+                } catch (e) {
+                    alert('Некорректный ответ ' + e.message);
+                }
+            }
+        }
+    }
+</script>
+
+<?php foreach ($streams as $stream) : ?>
+    <div class="stream-block">
+        <a href="/channel?user_channel=<?php echo $stream->getChannelName(); ?>&user_id=<?php echo $stream->getUserId(); ?>">
+            <img src="<?php echo $stream->getThumbnailUrl(); ?>" border="0"/>
+        </a>
+        <div class="stream-title">
+            <a href="/channel?user_channel=<?php echo $stream->getChannelName(); ?>&user_id=<?php echo $stream->getUserId(); ?>"><?php echo $stream->getChannelName(); ?></a>
+            <br/>
+            viewers: <?php echo $stream->getAmountOfViewers(); ?>
+        </div>
+        <?php if (array_key_exists($stream->getChannelName(), $favorites)) : ?>
+        <div class="fav is-liked" onclick="likeDislike('<?php echo $stream->getChannelName(); ?>', '<?php echo $stream->getUserId(); ?>')" id="<?php echo $stream->getUserId(); ?>">
+            <img src="/assets/img/icon-heart-solid@2x.png"/>
+        </div>
+        <?php else : ?>
+        <div class="fav is-notliked" onclick="likeDislike('<?php echo $stream->getChannelName(); ?>', '<?php echo $stream->getUserId(); ?>')" id="<?php echo $stream->getUserId(); ?>">
+            <img src="/assets/img/icon-heart-regular@2x.png"/>
+        </div>
+        <?php endif; ?>
+    </div>
+<?php endforeach; ?>
+
+<?php include '_layouts/footer.phtml'; ?>

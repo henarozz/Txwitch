@@ -1,0 +1,49 @@
+body {
+    background: #000000;
+    font-family: sans-serif;
+    color: #eeeeee;
+}
+a {
+    color:#eeeeee;
+}
+
+div.game-block,
+div.stream-block {
+    position: relative;
+    float: left;
+    margin: 0px 4px 3px 0px;
+}
+
+div.fav {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+div.fav > img {
+    width: 16px;
+    height: 16px;
+    border: 0px;
+}
+
+div.game-title {
+    background: #333333;
+    width: 220px;
+    height: 55px;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.stream-title {
+    background: #333333;
+    width: 300px;
+    height: 55px;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }

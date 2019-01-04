@@ -1,0 +1,15 @@
+<?php include '_layouts/header.phtml'; ?>
+
+<?php if (!empty ($header)) : ?>
+    <h1><?php echo (htmlspecialchars($header)); ?></h1>
+<?php else: ?>
+    <h1>Login</a></h1>
+<?php endif; ?>
+
+<form action="/app/login" method="post">
+    <input type="text" name="username" placeholder="Username"/>
+    <input type="password" name="password" placeholder="Password"/>
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+
+<?php include '_layouts/footer.phtml'; ?>
