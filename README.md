@@ -89,6 +89,14 @@ server {
         }
 }
 ```
+### folder permissions
+```bash
+chown -R www-data:www-data database/
+chmod -R 775 database/
+mkdir logs/
+chown -R www-data:www-data logs/
+chmod -R 775 logs/
+```
 
 ![alt text](https://dl.dropboxusercontent.com/s/kbpec5te8dzi6dl/twitchhls_games.png)
 ![alt text](https://dl.dropboxusercontent.com/s/xv5lmreubo3prfg/twitchhls_streams.png)
