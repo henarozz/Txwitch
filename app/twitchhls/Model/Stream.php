@@ -6,6 +6,8 @@
  */
 namespace Twitchhls\Model;
 
+use Twitchhls\Model\Channel;
+
 /**
  * Stream Model Class
  * 
@@ -15,15 +17,9 @@ class Stream
 {
     /**
      *
-     * @var string
+     * @var Channel
      */
-    protected $userId;
-    
-    /**
-     *
-     * @var string
-     */
-    protected $channelName;
+    protected $channel;
     
     /**
      *
@@ -46,43 +42,23 @@ class Stream
     }
     
     /**
-     * Getter method for <userId> attribute
+     * Getter method for <channel>
      * 
-     * @return string
+     * @return Channel model
      */
-    public function getUserId()
+    public function getChannel()
     {
-        return $this->userId;
+        return $this->channel;
     }
     
     /**
-     * Setter method for <userId> attribute
+     * Setter method for <channel>
      * 
-     * @param string $userId
+     * @param Channel $channel
      */
-    public function setUserId($userId)
+    public function setChannel(Channel $channel)
     {
-        $this->userId = $userId;
-    }
-    
-    /**
-     * Getter method for <channelName> attribute
-     * 
-     * @return string
-     */
-    public function getChannelName()
-    {
-        return $this->channelName;
-    }
-    
-    /**
-     * Setter method for <channelName> attribute
-     * 
-     * @param string $channelName
-     */
-    public function setChannelName($channelName)
-    {
-        $this->channelName = $channelName;
+        $this->channel = $channel;
     }
     
     /**

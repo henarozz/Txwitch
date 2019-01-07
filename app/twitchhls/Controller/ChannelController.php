@@ -60,9 +60,10 @@ class ChannelController
     public function channel(Request $request, Response $response, array $args)
     {
         $channelName = !empty($request->getQueryParam('user_channel')) ? $request->getQueryParam('user_channel') : null;
+        $userId = !empty($request->getQueryParam('user_id')) ? $request->getQueryParam('user_id') : null;
 
         $view = $this->container->get('view');
-        $channel = $this->mapper->getChannel($channelName);
+        $channel = $this->mapper->getChannel($channelName, $userId);
         
         return $view->render($response, 'channel.phtml', [
             'header' => 'Channel ' . $channelName,

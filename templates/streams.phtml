@@ -53,21 +53,25 @@
 </script>
 
 <?php foreach ($streams as $stream) : ?>
+    <?php
+        $channelName = $stream->getChannel()->getName();
+        $channelUserId = $stream->getChannel()->getUserId();
+    ?>
     <div class="stream-block">
-        <a href="/channel?user_channel=<?php echo $stream->getChannelName(); ?>&user_id=<?php echo $stream->getUserId(); ?>">
+        <a href="/channel?user_channel=<?php echo $channelName; ?>&user_id=<?php echo $channelUserId; ?>">
             <img src="<?php echo $stream->getThumbnailUrl(); ?>" border="0"/>
         </a>
         <div class="stream-title">
-            <a href="/channel?user_channel=<?php echo $stream->getChannelName(); ?>&user_id=<?php echo $stream->getUserId(); ?>"><?php echo $stream->getChannelName(); ?></a>
+            <a href="/channel?user_channel=<?php echo $channelName; ?>&user_id=<?php echo $channelUserId; ?>"><?php echo $channelName; ?></a>
             <br/>
             viewers: <?php echo $stream->getAmountOfViewers(); ?>
         </div>
-        <?php if (array_key_exists($stream->getChannelName(), $favorites)) : ?>
-        <div class="fav is-liked" onclick="likeDislike('<?php echo $stream->getChannelName(); ?>', '<?php echo $stream->getUserId(); ?>')" id="<?php echo $stream->getUserId(); ?>">
+        <?php if (array_key_exists($channelName, $favorites)) : ?>
+        <div class="fav is-liked" onclick="likeDislike('<?php echo $channelName; ?>', '<?php echo $channelUserId; ?>')" id="<?php echo $channelUserId; ?>">
             <img src="/assets/img/icon-heart-solid@2x.png"/>
         </div>
         <?php else : ?>
-        <div class="fav is-notliked" onclick="likeDislike('<?php echo $stream->getChannelName(); ?>', '<?php echo $stream->getUserId(); ?>')" id="<?php echo $stream->getUserId(); ?>">
+        <div class="fav is-notliked" onclick="likeDislike('<?php echo $channelName; ?>', '<?php echo $channelUserId; ?>')" id="<?php echo $channelUserId; ?>">
             <img src="/assets/img/icon-heart-regular@2x.png"/>
         </div>
         <?php endif; ?>

@@ -21,6 +21,12 @@ class Channel
     
     /**
      *
+     * @var string
+     */
+    protected $userId;
+    
+    /**
+     *
      * @var array
      */
     protected $playlist;
@@ -36,7 +42,7 @@ class Channel
     /**
      * Getter method for <name> attribute
      * 
-     * @return string name of channel
+     * @return string|null name of channel
      */
     public function getName()
     {
@@ -54,12 +60,32 @@ class Channel
     }
     
     /**
+     * Getter method for <userId> attribute
+     * 
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+    
+    /**
+     * Setter method for <userId> attribute
+     * 
+     * @param string $userId
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    }
+    
+    /**
      * Getter method for <playlist> attribute
      * 
      * @return array playlist of channel
      */
     public function getPlaylist()
-    {
+    { 
         return $this->playlist;
     }
     

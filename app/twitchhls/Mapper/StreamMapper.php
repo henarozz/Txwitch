@@ -10,6 +10,7 @@ use Twitchhls\Component\EasyPDO;
 use Twitchhls\Component\TwitchAPI;
 use Twitchhls\Mapper\Mapper;
 use Twitchhls\Model\Stream;
+use Twitchhls\Model\Channel;
 
 /**
  * StreamMapper Class
@@ -59,10 +60,13 @@ class StreamMapper extends Mapper
         $result = [];
         
         /** @var Stream $streamModel */
+        /** @var Channel $channelModel */
         foreach ($streams as $stream) {
             $streamModel = new Stream();
-            $streamModel->setUserId($stream['user_id']);
-            $streamModel->setChannelName($stream['channel_name']);
+            $channelModel = new Channel();
+            $channelModel->setName($stream['channel_name']);
+            $channelModel->setUserId($stream['user_id']);
+            $streamModel->setChannel($channelModel);
             $streamModel->setThumbnailUrl($stream['thumbnail_url']);
             $streamModel->setAmountOfViewers($stream['viewer_count']);
             $result[] = $streamModel;
