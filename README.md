@@ -1,6 +1,6 @@
 TwitchHLS
 =======
-TwitchHLS — web application to extract HLS links from Twitch.tv. Based on PHP Slim Framework 3. The application will be useful for old iOS devices.
+[TwitchHLS](https://github.com/henarozz/twitchhls) — web application to extract HLS links from [Twitch.tv](https://www.twitch.tv). Based on [PHP Slim Framework 3](http://www.slimframework.com). The application will be useful for old iOS devices.
 
 Requirements
 ---------------
@@ -42,7 +42,7 @@ Folder System
 Configuration
 ---------------
 ### settings.php
-Set your personal Developer Twitch Client ID (you can find it on dev.twitch.tv)
+Set your personal Developer Twitch Client ID (you can find it on [dev.twitch.tv](https://dev.twitch.tv))
 ```php
 ...
 // Twitch API settings
@@ -68,11 +68,8 @@ upstream php56-fpm {
 }
 server {
         listen 80;
-
         root /Users/macos/Projects/twitchhls/public;
-
         index index.php index.html index.htm;
-
         server_name twitchhls.local;
 
         location / {
