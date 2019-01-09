@@ -1,14 +1,13 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
-    "keywords": ["microframework", "rest", "router", "psr7"],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "name": "henarozz/twitchhls",
+    "description": "TwitchHLS — web application to extract HLS links from Twitch.tv",
+    "keywords": ["twitchhls", "twitch", "hls", "stream"],
+    "homepage": "https://github.com/henarozz/twitchhls",
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "Alexander Makhin",
+            "email": "henarozz@gmail.com"
         }
     ],
     "require": {
