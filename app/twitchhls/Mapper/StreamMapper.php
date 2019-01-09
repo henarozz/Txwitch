@@ -62,11 +62,8 @@ class StreamMapper extends Mapper
         /** @var Stream $streamModel */
         /** @var Channel $channelModel */
         foreach ($streams as $stream) {
-            $streamModel = new Stream();
-            $channelModel = new Channel();
-            $channelModel->setName($stream['channel_name']);
-            $channelModel->setUserId($stream['user_id']);
-            $streamModel->setChannel($channelModel);
+            $channelModel = new Channel($stream['channel_name'], $stream['user_id']);
+            $streamModel = new Stream($channelModel);
             $streamModel->setThumbnailUrl($stream['thumbnail_url']);
             $streamModel->setAmountOfViewers($stream['viewer_count']);
             $result[] = $streamModel;

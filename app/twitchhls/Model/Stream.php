@@ -35,10 +35,12 @@ class Stream
     
     /**
      * Stream Model constructor
+     * 
+     * @param Channel $channel
      */
-    public function __construct()
+    public function __construct(Channel $channel)
     {
-        // empty
+        $this->channel = $channel;
     }
     
     /**
@@ -49,16 +51,6 @@ class Stream
     public function getChannel()
     {
         return $this->channel;
-    }
-    
-    /**
-     * Setter method for <channel>
-     * 
-     * @param Channel $channel
-     */
-    public function setChannel(Channel $channel)
-    {
-        $this->channel = $channel;
     }
     
     /**

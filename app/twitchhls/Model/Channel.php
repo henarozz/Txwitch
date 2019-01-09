@@ -33,10 +33,15 @@ class Channel
     
     /**
      * Channel Model constructor
+     * 
+     * @param string $name
+     * @param string $userId
      */
-    public function __construct()
+    public function __construct($name, $userId)
     {
-        // empty
+        $this->name = $name;
+        $this->userId = $userId;
+        
     }
     
     /**
@@ -50,16 +55,6 @@ class Channel
     }
     
     /**
-     * Setter method for <name> attribute
-     * 
-     * @param string $name of channel
-     */
-    public function setName($name = null)
-    {
-        $this->name = $name;
-    }
-    
-    /**
      * Getter method for <userId> attribute
      * 
      * @return string
@@ -67,16 +62,6 @@ class Channel
     public function getUserId()
     {
         return $this->userId;
-    }
-    
-    /**
-     * Setter method for <userId> attribute
-     * 
-     * @param string $userId
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
     }
     
     /**

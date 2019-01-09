@@ -55,9 +55,7 @@ class ChannelMapper extends Mapper
     { 
         $playlist = $this->twitchApi->getChannelPlaylist($channelName);
         
-        $channelModel = new Channel();
-        $channelModel->setName($channelName);
-        $channelModel->setUserId($userId);
+        $channelModel = new Channel($channelName, $userId);
         $channelModel->setPlaylist($playlist);
         
         return $channelModel;
