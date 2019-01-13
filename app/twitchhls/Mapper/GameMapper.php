@@ -60,9 +60,7 @@ class GameMapper extends Mapper
         
         /** @var Game $gameModel */
         foreach ($games as $game) {
-            $gameModel = new Game();
-            $gameModel->setId($game['id']);
-            $gameModel->setName($game['name']);
+            $gameModel = new Game($game['id'], $game['name']);
             $gameModel->setBoxArtUrl($game['box_art_url']);
             $result[] = $gameModel;
         }

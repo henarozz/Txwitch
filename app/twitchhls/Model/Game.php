@@ -33,10 +33,13 @@ class Game
     
     /**
      * Game Model constructor
+     *
+     * @param string $id
+     * @param string $name
      */
-    public function __construct()
+    public function __construct($id, $name)
     {
-        // empty
+        $this->id = $id;
     }
     
     /**
@@ -50,16 +53,6 @@ class Game
     }
     
     /**
-     * Setter method for <id> attribute
-     * 
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-    
-    /**
      * Getter method for <name> attribute
      * 
      * @return string
@@ -67,16 +60,6 @@ class Game
     public function getName()
     {
         return $this->name;
-    }
-    
-    /**
-     * Setter method for <name> attribute
-     * 
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
     }
     
     /**
