@@ -1,6 +1,6 @@
-TwitchHLS
+Txwitch
 =======
-[TwitchHLS](https://github.com/henarozz/twitchhls) — web application to extract HLS links from [Twitch.tv](https://www.twitch.tv). Based on [PHP Slim Framework 3](http://www.slimframework.com). The application will be useful for old iOS devices.
+[Txwitch](https://github.com/henarozz/txwitch) — web application to extract HLS links from [Twitch.tv](https://www.twitch.tv). Based on [PHP Slim Framework 3](http://www.slimframework.com). The application will be useful for old iOS devices.
 
 Requirements
 ---------------
