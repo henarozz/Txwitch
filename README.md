@@ -61,16 +61,16 @@ Set application authentication credentials
         ],
 ...
 ```
-### nginx.twitchhls.conf
+### nginx.txwitchhls.conf
 ```nginx
 upstream php56-fpm {
         server 127.0.0.1:9000;
 }
 server {
         listen 80;
-        root /Users/macos/Projects/twitchhls/public;
+        root /Users/macos/Projects/txwitchhls/public;
         index index.php index.html index.htm;
-        server_name twitchhls.local;
+        server_name txwitchhls.local;
 
         location / {
                 try_files $uri /index.php$is_args$args;
