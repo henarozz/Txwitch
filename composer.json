@@ -1,8 +1,8 @@
 {
-    "name": "henarozz/twitchhls",
-    "description": "TwitchHLS — web application to extract HLS links from Twitch.tv",
-    "keywords": ["twitchhls", "twitch", "hls", "stream"],
-    "homepage": "https://github.com/henarozz/twitchhls",
+    "name": "henarozz/Txwitch",
+    "description": "Txwitch — web application to extract HLS links from Twitch.tv",
+    "keywords": ["Txwitch", "twitchhls", "hls", "stream"],
+    "homepage": "https://github.com/henarozz/Txwitch",
     "license": "MIT",
     "authors": [
         {
