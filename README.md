@@ -1,6 +1,6 @@
 Txwitch
 =======
-[Txwitch](https://github.com/henarozz/Txwitch) — web application to extract HLS links from [Twitch.tv](https://www.twitch.tv). Based on [PHP Slim Framework 3](http://www.slimframework.com). The application will be useful for old iOS devices.
+[Txwitch](https://github.com/henarozz/Txwitch) — web application that allows you to extract HLS links from [Twitch.tv](https://www.twitch.tv). Based on [PHP Slim Framework 3](http://www.slimframework.com). The application will be useful for old iOS devices.
 
 Requirements
 ---------------
@@ -17,14 +17,14 @@ Getting Started
 Folder System
 ---------------
 * app/
-    * twitchhls/ (PSR-4 Package. Autoload from composer.json)
+    * txwitch/ (PSR-4 Package. Autoload from composer.json)
         * Component/
         * Controller/
         * Mapper/
         * Middleware/
         * Model/
 * database/
-    * twitchhls.db (Sqlite Database)
+    * txwitch.db (Sqlite Database)
 * logs/
 * public/ (WebRoot Folder)
     * assets/
@@ -61,16 +61,16 @@ Set application authentication credentials
         ],
 ...
 ```
-### nginx.txwitchhls.conf
+### nginx.txwitch.conf
 ```nginx
 upstream php56-fpm {
         server 127.0.0.1:9000;
 }
 server {
         listen 80;
-        root /Users/macos/Projects/txwitchhls/public;
+        root /Users/macos/Projects/Txwitch/public;
         index index.php index.html index.htm;
-        server_name txwitchhls.local;
+        server_name txwitch.local;
 
         location / {
                 try_files $uri /index.php$is_args$args;

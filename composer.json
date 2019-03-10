@@ -1,7 +1,7 @@
 {
     "name": "henarozz/txwitch",
     "description": "Txwitch — web application to extract HLS links from Twitch.tv",
-    "keywords": ["Txwitch", "twitchhls", "hls", "stream"],
+    "keywords": ["Txwitch", "twitch hls", "hls", "stream"],
     "homepage": "https://github.com/henarozz/Txwitch",
     "license": "MIT",
     "authors": [
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Twitchhls\\": "app/twitchhls/"
+            "Txwitch\\": "app/txwitch/"
         }
     },
     "autoload-dev": {

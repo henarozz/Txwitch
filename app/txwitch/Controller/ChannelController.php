@@ -1,22 +1,22 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Controller;
+namespace Txwitch\Controller;
 
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Twitchhls\Component\EasyPDO;
-use Twitchhls\Component\TwitchAPI;
-use Twitchhls\Mapper\ChannelMapper;
+use Txwitch\Component\EasyPDO;
+use Txwitch\Component\TwitchAPI;
+use Txwitch\Mapper\ChannelMapper;
 
 /**
  * ChannelController Class
  * 
- * @package Twitchhls\Controller
+ * @package Txwitch\Controller
  */
 class ChannelController
 {

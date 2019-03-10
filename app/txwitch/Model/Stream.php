@@ -1,17 +1,17 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Model;
+namespace Txwitch\Model;
 
-use Twitchhls\Model\Channel;
+use Txwitch\Model\Channel;
 
 /**
  * Stream Model Class
  * 
- * @package Twitchhls\Model
+ * @package Txwitch\Model
  */
 class Stream
 {

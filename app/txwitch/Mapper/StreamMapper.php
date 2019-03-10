@@ -1,21 +1,21 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Mapper;
+namespace Txwitch\Mapper;
 
-use Twitchhls\Component\EasyPDO;
-use Twitchhls\Component\TwitchAPI;
-use Twitchhls\Mapper\Mapper;
-use Twitchhls\Model\Stream;
-use Twitchhls\Model\Channel;
+use Txwitch\Component\EasyPDO;
+use Txwitch\Component\TwitchAPI;
+use Txwitch\Mapper\Mapper;
+use Txwitch\Model\Stream;
+use Txwitch\Model\Channel;
 
 /**
  * StreamMapper Class
  * 
- * @package Twitchhls\Mapper
+ * @package Txwitch\Mapper
  */
 class StreamMapper extends Mapper
 {

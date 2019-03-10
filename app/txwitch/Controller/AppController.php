@@ -1,20 +1,20 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Controller;
+namespace Txwitch\Controller;
 
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Twitchhls\Component\Security;
+use Txwitch\Component\Security;
 
 /**
  * AppController Class
  * 
- * @package Twitchhls\Controller
+ * @package Txwitch\Controller
  */
 class AppController
 {
@@ -69,7 +69,7 @@ class AppController
                 return $view->render(
                         $response, 
                         'login.phtml', 
-                        ['header' => 'TwitchHLS']
+                        ['header' => 'Txwitch']
                 );
                 break;
             case 'POST':

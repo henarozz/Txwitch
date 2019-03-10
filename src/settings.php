@@ -11,7 +11,7 @@ return [
 
         // Monolog settings
         'logger' => [
-            'name' => 'twitchhls-app',
+            'name' => 'txwitch-app',
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
@@ -20,7 +20,7 @@ return [
         'database' => [
             'host' => __DIR__ . '/../database/',
             'port' => '',
-            'dbname' => 'twitchhls.db',
+            'dbname' => 'txwitch.db',
             'user' => '',
             'password' => '',
             'charset' => '',

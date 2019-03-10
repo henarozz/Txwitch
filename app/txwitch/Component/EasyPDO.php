@@ -4,7 +4,7 @@
  *
  * @author ou
  */
-namespace Twitchhls\Component;
+namespace Txwitch\Component;
 
 use PDO;
 

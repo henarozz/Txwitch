@@ -1,15 +1,15 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Component;
+namespace Txwitch\Component;
 
 /**
  * TwitchAPI Client Class
  * 
- * @package Twitchhls\Component
+ * @package Txwitch\Component
  */
 class TwitchAPI {
     

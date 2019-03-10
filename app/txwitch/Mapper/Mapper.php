@@ -1,18 +1,18 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Mapper;
+namespace Txwitch\Mapper;
 
-use Twitchhls\Component\EasyPDO;
-use Twitchhls\Component\TwitchAPI;
+use Txwitch\Component\EasyPDO;
+use Txwitch\Component\TwitchAPI;
 
 /**
  * Abstract Mapper Class
  * 
- * @package Twitchhls\Mapper
+ * @package Txwitch\Mapper
  */
 abstract class Mapper {
     /**

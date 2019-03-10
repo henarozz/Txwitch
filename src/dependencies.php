@@ -25,7 +25,7 @@ $container['db'] = function ($c) {
     $dsn = 'sqlite:' . $settings['host'] . $settings['dbname'];
     $user = $settings['user'];
     $password = $settings['password'];
-    $db = new Twitchhls\Component\EasyPDO($dsn, $user, $password);
+    $db = new Txwitch\Component\EasyPDO($dsn, $user, $password);
     
     return $db;
 };
@@ -39,14 +39,14 @@ $container['httpClient'] = function ($c) {
 $container['twitchApi'] = function ($c) {
     $settings = $c->get('settings')['twitch'];
     $httpClient = $c->get('httpClient');
-    $twitchApi = new Twitchhls\Component\TwitchAPI($settings, $httpClient);
+    $twitchApi = new Txwitch\Component\TwitchAPI($settings, $httpClient);
     
     return $twitchApi;
 };
 
 // Security component
 $container['security'] = function ($c) {
-    $security = new Twitchhls\Component\Security();
+    $security = new Txwitch\Component\Security();
     
     return $security;
 };

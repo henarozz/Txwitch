@@ -1,15 +1,15 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Model;
+namespace Txwitch\Model;
 
 /**
  * Channel Model Class
  * 
- * @package Twitchhls\Model
+ * @package Txwitch\Model
  */
 class Channel
 {

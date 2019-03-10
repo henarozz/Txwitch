@@ -1,10 +1,10 @@
 <?php
 /**
- * TwitchHLS
+ * Txwitch
  * 
  * @author Alexander Makhin <henarozz@gmail.com>
  */
-namespace Twitchhls\Controller;
+namespace Txwitch\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -12,7 +12,7 @@ use Slim\Http\Response;
 /**
  * HomeController Class
  * 
- * @package Twitchhls\Controller
+ * @package Txwitch\Controller
  */
 class HomeController
 {

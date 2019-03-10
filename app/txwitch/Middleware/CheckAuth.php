@@ -1,11 +1,11 @@
 <?php
 
-namespace Twitchhls\Middleware;
+namespace Txwitch\Middleware;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Twitchhls\Component\Security;
+use Txwitch\Component\Security;
 
 /**
  * CheckAuth middleware invokable class
@@ -34,7 +34,7 @@ class CheckAuth
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next)
     {
-        /** @var Twitchhls\Component\Security */
+        /** @var Txwitch\Component\Security */
         $security = $this->container->get('security');
         $backUri = '';
         
