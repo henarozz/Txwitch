@@ -17,7 +17,7 @@ class TwitchAPI {
      *
      * @var string
      */
-	private $clientId;
+    private $clientId;
     
     /**
      *
@@ -29,31 +29,31 @@ class TwitchAPI {
      *
      * @var string
      */
-	protected $usherUrl;
+    protected $usherUrl;
     
     /**
      *
      * @var string
      */
-	protected $tokenUrl;
+    protected $tokenUrl;
     
     /**
      *
      * @var string
      */
-	protected $gameUrl;
+    protected $gameUrl;
     
     /**
      *
      * @var string
      */
-	protected $streamUrl;
+    protected $streamUrl;
     
     /**
      *
      * @var array
      */
-	protected $thumbSize;
+    protected $thumbSize;
 
     /**
      * TwitchAPI constructor
@@ -61,16 +61,16 @@ class TwitchAPI {
      * @param array $settings
      * @param GuzzleHttp\Client $httpClient
      */
-	public function __construct($settings, $httpClient)
+    public function __construct($settings, $httpClient)
     {
-		$this->clientId = $settings['clientId'];
+        $this->clientId = $settings['clientId'];
         $this->httpClient = $httpClient;
-		$this->usherUrl = $settings['usherUrl'];
-		$this->tokenUrl = str_replace('{clientId}', $this->clientId, $settings['tokenUrl']);
-		$this->gameUrl = $settings['gameUrl'];
-		$this->streamUrl = $settings['streamUrl'];
-		$this->thumbSize = $settings['thumbSize'];
-	}
+        $this->usherUrl = $settings['usherUrl'];
+        $this->tokenUrl = str_replace('{clientId}', $this->clientId, $settings['tokenUrl']);
+        $this->gameUrl = $settings['gameUrl'];
+        $this->streamUrl = $settings['streamUrl'];
+        $this->thumbSize = $settings['thumbSize'];
+    }
     
     /**
      * Method to get thumb size (width, height)
@@ -99,22 +99,22 @@ class TwitchAPI {
      */
     public function getTopGames()
     {
-		$requestUrl = $this->gameUrl;
+        $requestUrl = $this->gameUrl;
         
-		$response = $this->httpClient->request('GET', $requestUrl, ['headers' => ['Client-ID' => $this->clientId]]);
+        $response = $this->httpClient->request('GET', $requestUrl, ['headers' => ['Client-ID' => $this->clientId]]);
         $responseBody = $response->getBody();
         $responseData = $responseBody->getContents();
-		$responseData = json_decode($responseData, true);
+        $responseData = json_decode($responseData, true);
         
-		foreach ($responseData['data'] as $key => $game) {
-			$boxArtUrl = $game['box_art_url'];
-			$boxArtUrl = str_replace('{width}', $this->thumbSize['width'], $boxArtUrl);
-			$boxArtUrl = str_replace('{height}', $this->thumbSize['height'], $boxArtUrl);
-			$responseData['data'][$key]['box_art_url'] = $boxArtUrl;
-		}
-        
-		return $responseData['data'];
-	}
+        foreach ($responseData['data'] as $key => $game) {
+            $boxArtUrl = $game['box_art_url'];
+            $boxArtUrl = str_replace('{width}', $this->thumbSize['width'], $boxArtUrl);
+            $boxArtUrl = str_replace('{height}', $this->thumbSize['height'], $boxArtUrl);
+            $responseData['data'][$key]['box_art_url'] = $boxArtUrl;
+        }
+
+        return $responseData['data'];
+    }
     
     /**
      * Method-helper to get channel name from thumbnail url
@@ -149,22 +149,22 @@ class TwitchAPI {
         
         $requestUrl = $this->streamUrl . $queryUrl;
         
-		$response = $this->httpClient->request('GET', $requestUrl, ['headers' => ['Client-ID' => $this->clientId]]);
+        $response = $this->httpClient->request('GET', $requestUrl, ['headers' => ['Client-ID' => $this->clientId]]);
         $responseBody = $response->getBody();
         $responseData = $responseBody->getContents();
-		$responseData = json_decode($responseData, true);
+        $responseData = json_decode($responseData, true);
         
-		foreach ($responseData['data'] as $key => $stream) {
-			$thumbnailUrl = $stream['thumbnail_url'];
+        foreach ($responseData['data'] as $key => $stream) {
+            $thumbnailUrl = $stream['thumbnail_url'];
             $channelName = $this->getChannelName($thumbnailUrl);
-			$responseData['data'][$key]['channel_name'] = $channelName;
-			$thumbnailUrl = str_replace('{width}', $this->thumbSize['width'], $thumbnailUrl);
-			$thumbnailUrl = str_replace('{height}', $this->thumbSize['height'], $thumbnailUrl);
-			$responseData['data'][$key]['thumbnail_url'] = $thumbnailUrl;
-		}
+            $responseData['data'][$key]['channel_name'] = $channelName;
+            $thumbnailUrl = str_replace('{width}', $this->thumbSize['width'], $thumbnailUrl);
+            $thumbnailUrl = str_replace('{height}', $this->thumbSize['height'], $thumbnailUrl);
+            $responseData['data'][$key]['thumbnail_url'] = $thumbnailUrl;
+        }
         
-		return $responseData['data'];
-	}
+        return $responseData['data'];
+    }
     
     /**
      * Method-helper to get API token and signature
@@ -172,17 +172,17 @@ class TwitchAPI {
      * @param string $channelName
      * @return array
      */
-	private function getChannelTokenAndSignature($channelName)
+    private function getChannelTokenAndSignature($channelName)
     {
-		$requestUrl = str_replace('{user_channel}', $channelName, $this->tokenUrl);
+        $requestUrl = str_replace('{user_channel}', $channelName, $this->tokenUrl);
         
         $response = $this->httpClient->request('GET', $requestUrl, ['headers' => ['Client-ID' => $this->clientId]]);
         $responseBody = $response->getBody();
         $responseData = $responseBody->getContents();
-		$responseData = json_decode($responseData, true);
+        $responseData = json_decode($responseData, true);
         
         return $responseData;
-	}
+    }
     
     /**
      * Method to get playlist of channel
@@ -190,17 +190,17 @@ class TwitchAPI {
      * @param type $channelName
      * @return array
      */
-	public function getChannelPlaylist($channelName)
+    public function getChannelPlaylist($channelName)
     {
-		$tokenAndSignature = $this->getChannelTokenAndSignature($channelName);
+        $tokenAndSignature = $this->getChannelTokenAndSignature($channelName);
         
-		$usherUrl = $this->usherUrl;
-		$random = rand(0,1E7);
+        $usherUrl = $this->usherUrl;
+        $random = rand(0,1E7);
         
-		$requestUrl = str_replace('{user_channel}', $channelName, $usherUrl);
-		$requestUrl = str_replace('{token}', $tokenAndSignature['token'], $requestUrl);
-		$requestUrl = str_replace('{sig}', $tokenAndSignature['sig'], $requestUrl);
-		$requestUrl = str_replace('{random}', $random, $requestUrl);
+        $requestUrl = str_replace('{user_channel}', $channelName, $usherUrl);
+        $requestUrl = str_replace('{token}', $tokenAndSignature['token'], $requestUrl);
+        $requestUrl = str_replace('{sig}', $tokenAndSignature['sig'], $requestUrl);
+        $requestUrl = str_replace('{random}', $random, $requestUrl);
         
         $response = $this->httpClient->request('GET', $requestUrl, ['headers' => ['Client-ID' => $this->clientId]]);
         $responseBody = $response->getBody();
@@ -220,9 +220,9 @@ class TwitchAPI {
             if (substr_count($row, 'http') > 0) {
                 $playlist[$i]['uri'] = $row;
                 $i++;
-			}
-		}
+            }
+        }
         
-		return $playlist;
-	}
+        return $playlist;
+    }
 }
