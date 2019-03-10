@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Mapper;
@@ -14,24 +14,24 @@ use Txwitch\Model\Channel;
 
 /**
  * StreamMapper Class
- * 
+ *
  * @package Txwitch\Mapper
  */
 class StreamMapper extends Mapper
 {
     /**
      * Database
-     * 
+     *
      * @Inject
-     * @var EasyPDO 
+     * @var EasyPDO
      */
     protected $db;
     
     /**
      * TwitchAPI
-     * 
+     *
      * @Inject
-     * @var TwitchAPI 
+     * @var TwitchAPI
      */
     protected $twitchApi;
     
@@ -49,12 +49,12 @@ class StreamMapper extends Mapper
 
     /**
      * Method to get streams
-     * 
+     *
      * @return array of Stream models
      */
     public function getStreams($gameId, $lang)
     {
-        $this->twitchApi->setThumbSize(['width' => 320, 'height' => 180]);   
+        $this->twitchApi->setThumbSize(['width' => 320, 'height' => 180]);
         $streams = $this->twitchApi->getActiveStreams($gameId, $lang);
         
         $result = [];
@@ -72,4 +72,3 @@ class StreamMapper extends Mapper
         return $result;
     }
 }
-

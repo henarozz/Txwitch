@@ -30,7 +30,7 @@ class EasyPDO extends PDO
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         );
-        if(!empty($options)) {
+        if (!empty($options)) {
             $driver_options = array_merge($driver_options, $options);
         }
 
@@ -52,7 +52,7 @@ class EasyPDO extends PDO
             $errorInfo = $this->errorInfo();
             throw new PDOException("Database error [{$errorInfo[0]}]: {$errorInfo[2]}, driver error code is $errorInfo[1]");
         }
-        if(!is_array($bind)) {
+        if (!is_array($bind)) {
             $bind = empty($bind) ? array() : array($bind);
         }
         if (!$stmt->execute($bind) || $stmt->errorCode() != '00000') {
@@ -99,9 +99,9 @@ class EasyPDO extends PDO
      */
     public function where($where, $andOr = 'AND')
     {
-        if(is_array($where)) {
+        if (is_array($where)) {
             $tmp = array();
-            foreach($where as $k => $v) {
+            foreach ($where as $k => $v) {
                 $tmp[] = $k . '=' . $this->quote($v);
             }
             return '(' . implode(" $andOr ", $tmp) . ')';
@@ -120,17 +120,17 @@ class EasyPDO extends PDO
      * @param  string $limit  limit string (MySQL is "[offset,] row_count")
      * @return array
      */
-    public function select($table, $fields = "*", $where = "", $bind = array(), $order = NULL, $limit = NULL)
+    public function select($table, $fields = "*", $where = "", $bind = array(), $order = null, $limit = null)
     {
         $sql = "SELECT " . $fields . " FROM " . $table;
-        if(!empty($where)) {
+        if (!empty($where)) {
             $where = $this->where($where);
             $sql .= " WHERE " . $where;
         }
-        if(!empty($order)) {
+        if (!empty($order)) {
             $sql .= " ORDER BY " . $order;
         }
-        if(!empty($limit)) {
+        if (!empty($limit)) {
             $sql .= " LIMIT " . $limit;
         }
         $stmt = $this->_prepare($sql, $bind);
@@ -149,7 +149,7 @@ class EasyPDO extends PDO
         $fieldNames = array_keys($data);
         $sql = "INSERT INTO `$table` (" . implode($fieldNames, ", ") . ") VALUES (:" . implode($fieldNames, ", :") . ");";
         $bind = array();
-        foreach($fieldNames as $field) {
+        foreach ($fieldNames as $field) {
             $bind[":$field"] = $data[$field];
         }
         return $this->run($sql, $bind);
@@ -166,15 +166,15 @@ class EasyPDO extends PDO
      */
     public function bulkInsert($table, $fieldNames, $data, $replace = false)
     {
-        if(empty($table) || empty($fieldNames) || empty($data)) {
+        if (empty($table) || empty($fieldNames) || empty($data)) {
             return 0;
         }
         $fieldCount = count($fieldNames);
         $valueList = '';
         foreach ($data as $values) {
             $dataCount = count($values);
-            if($dataCount != $fieldCount) {
-                if($dataCount > $fieldCount) {
+            if ($dataCount != $fieldCount) {
+                if ($dataCount > $fieldCount) {
                     $values = array_slice($values, 0, $fieldCount);
                 } else {
                     throw new PDOException("Number of columns and values not match!");
@@ -207,19 +207,19 @@ class EasyPDO extends PDO
      * @param  array  $bind  parameters. A single value or an array of values
      * @return integer Number of effected rows
      */
-    public function update($table, $data, $where="", $bind=array())
+    public function update($table, $data, $where = "", $bind = array())
     {
         $sql = "UPDATE `$table` SET ";
         $comma = '';
-        if(!is_array($bind)) {
+        if (!is_array($bind)) {
             $bind = empty($bind) ? array() : array($bind);
         }
-        foreach($data as $k => $v) {
+        foreach ($data as $k => $v) {
             $sql .= $comma . $k . " = :upd_" . $k;
             $comma = ', ';
             $bind[":upd_" . $k] = $v;
         }
-        if(!empty($where)) {
+        if (!empty($where)) {
             $where = $this->where($where);
             $sql .= " WHERE " . $where;
         }
@@ -237,7 +237,7 @@ class EasyPDO extends PDO
     public function delete($table, $where, $bind = array())
     {
         $sql = "DELETE FROM `$table`";
-        if(!empty($where)) {
+        if (!empty($where)) {
             $where = $this->where($where);
             $sql .= " WHERE " . $where;
         }
@@ -268,11 +268,11 @@ class EasyPDO extends PDO
     public function save($table, $data, $where = "", $bind = array())
     {
         $count = 0;
-        if(!empty($where)) {
+        if (!empty($where)) {
             $where = $this->where($where);
             $count = $this->fetchOne("SELECT COUNT(1) FROM $table WHERE $where", $bind);
         }
-        if($count == 0) {
+        if ($count == 0) {
             return $this->insert($table, $data);
         } else {
             return $this->update($table, $data, $where, $bind);
@@ -330,9 +330,9 @@ class EasyPDO extends PDO
         $stmt = $this->_prepare($sql, $bind);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $result = array();
-        if(!empty($records)) {
+        if (!empty($records)) {
             $k0 = key($records[0]);
-            foreach($records as $rec) {
+            foreach ($records as $rec) {
                 $result[$rec[$k0]] = $rec;
             }
         }
@@ -351,9 +351,9 @@ class EasyPDO extends PDO
         $stmt = $this->_prepare($sql, $bind);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $result = array();
-        if(!empty($records)) {
+        if (!empty($records)) {
             $k0 = key($records[0]);
-            foreach($records as $rec) {
+            foreach ($records as $rec) {
                 $result[$rec[$k0]][] = $rec;
             }
         }
@@ -385,9 +385,9 @@ class EasyPDO extends PDO
         $stmt = $this->_prepare($sql, $bind);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $result = array();
-        if(!empty($records)) {
+        if (!empty($records)) {
             $k0 = key($records[0]);
-            foreach($records as $rec) {
+            foreach ($records as $rec) {
                 $result[] = $rec[$k0];
             }
         }
@@ -408,24 +408,24 @@ class EasyPDO extends PDO
      * @param  string $charset  default charset
      * @return integer Number of effected rows
      */
-    public function createTable($table, $fieldNames, $fieldTypes, $defaultValues, $fieldComments, $primaryKey = '', $indexes = array(), $dbEngine = 'InnoDB', $charset='utf8')
+    public function createTable($table, $fieldNames, $fieldTypes, $defaultValues, $fieldComments, $primaryKey = '', $indexes = array(), $dbEngine = 'InnoDB', $charset = 'utf8')
     {
         $sql = "CREATE TABLE IF NOT EXISTS `$table` (";
-        foreach($fieldNames as $i => $fieldName) {
+        foreach ($fieldNames as $i => $fieldName) {
             $sql .= "`$fieldName` " . $fieldTypes[$i];
-            if(!empty($defaultValues[$i])) {
+            if (!empty($defaultValues[$i])) {
                 $sql .= " DEFAULT " . $defaultValues[$i];
             }
-            if(!empty($fieldComments[$i])) {
+            if (!empty($fieldComments[$i])) {
                 $sql .= " COMMENT '" . $fieldComments[$i] . "'";
             }
             $sql .= ", ";
         }
-        if(empty($primaryKey)) {
+        if (empty($primaryKey)) {
             $primaryKey = $fieldNames[0];
         }
         $sql .= " PRIMARY KEY $primaryKey";
-        foreach($indexes as $i => $index) {
+        foreach ($indexes as $i => $index) {
             $sql .= ",INDEX index_{$i} $index";
         }
         $sql .= ") ENGINE={$dbEngine} DEFAULT CHARSET={$charset};";
@@ -485,5 +485,4 @@ class EasyPDO extends PDO
     {
         return $this->transactionCount > 0;
     }
-
 }

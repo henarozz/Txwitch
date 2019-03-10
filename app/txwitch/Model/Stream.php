@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Model;
@@ -10,7 +10,7 @@ use Txwitch\Model\Channel;
 
 /**
  * Stream Model Class
- * 
+ *
  * @package Txwitch\Model
  */
 class Stream
@@ -29,13 +29,13 @@ class Stream
     
     /**
      *
-     * @var string 
+     * @var string
      */
     protected $amountOfViewers;
     
     /**
      * Stream Model constructor
-     * 
+     *
      * @param Channel $channel
      */
     public function __construct(Channel $channel)
@@ -45,7 +45,7 @@ class Stream
     
     /**
      * Getter method for <channel>
-     * 
+     *
      * @return Channel model
      */
     public function getChannel()
@@ -55,7 +55,7 @@ class Stream
     
     /**
      * Getter method for <thumbnailUrl> attribute
-     * 
+     *
      * @return string
      */
     public function getThumbnailUrl()
@@ -65,7 +65,7 @@ class Stream
     
     /**
      * Setter method for <thumbnailUrl> attribute
-     * 
+     *
      * @param string $thumbnailUrl
      */
     public function setThumbnailUrl($thumbnailUrl)
@@ -75,7 +75,7 @@ class Stream
     
     /**
      * Getter method for <amountOfViewers> attribute
-     * 
+     *
      * @return string
      */
     public function getAmountOfViewers()
@@ -85,7 +85,7 @@ class Stream
     
     /**
      * Setter method for <amountOfViewers> attribute
-     * 
+     *
      * @param string $amountOfViewers
      */
     public function setAmountOfViewers($amountOfViewers)
@@ -93,4 +93,3 @@ class Stream
         $this->amountOfViewers = $amountOfViewers;
     }
 }
-

@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Controller;
@@ -13,16 +13,16 @@ use Txwitch\Mapper\GameMapper;
 
 /**
  * GameController Class
- * 
+ *
  * @package Txwitch\Controller
  */
 class GameController
 {
     /**
      * DI Container
-     * 
+     *
      * @Inject
-     * @var ContainerInterface 
+     * @var ContainerInterface
      */
     protected $container;
     
@@ -35,21 +35,21 @@ class GameController
     
     /**
      * GameController constructor
-     * 
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
         $this->mapper = new GameMapper(
-                $this->container->get('db'), 
-                $this->container->get('twitchApi')
+            $this->container->get('db'),
+            $this->container->get('twitchApi')
         );
     }
     
     /**
      * Method to control the action on route </games>
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param array $args
@@ -67,4 +67,3 @@ class GameController
         ]);
     }
 }
-

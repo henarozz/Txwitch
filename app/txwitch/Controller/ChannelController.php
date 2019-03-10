@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Controller;
@@ -15,16 +15,16 @@ use Txwitch\Mapper\ChannelMapper;
 
 /**
  * ChannelController Class
- * 
+ *
  * @package Txwitch\Controller
  */
 class ChannelController
 {
     /**
      * DI Container
-     * 
+     *
      * @Inject
-     * @var ContainerInterface 
+     * @var ContainerInterface
      */
     protected $container;
     
@@ -37,21 +37,21 @@ class ChannelController
     
     /**
      * ChannelController constructor
-     * 
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
         $this->mapper = new ChannelMapper(
-                $this->container->get('db'), 
-                $this->container->get('twitchApi')
+            $this->container->get('db'),
+            $this->container->get('twitchApi')
         );
     }
     
     /**
      * Method to control the action on route </channel>
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param array $args
@@ -73,7 +73,7 @@ class ChannelController
     
     /**
      * Method to control the action on route </channel/like>
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param array $args
@@ -91,7 +91,7 @@ class ChannelController
     
     /**
      * Method to control the action on route </channel/dislike>
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param array $args
@@ -106,4 +106,3 @@ class ChannelController
         return $response->withJson($data);
     }
 }
-

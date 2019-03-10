@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Mapper;
@@ -13,24 +13,24 @@ use Txwitch\Model\Game;
 
 /**
  * GamelMapper Class
- * 
+ *
  * @package Txwitch\Mapper
  */
 class GameMapper extends Mapper
 {
     /**
      * Database
-     * 
+     *
      * @Inject
-     * @var EasyPDO 
+     * @var EasyPDO
      */
     protected $db;
     
     /**
      * TwitchAPI
-     * 
+     *
      * @Inject
-     * @var TwitchAPI 
+     * @var TwitchAPI
      */
     protected $twitchApi;
     
@@ -48,7 +48,7 @@ class GameMapper extends Mapper
 
     /**
      * Method to get games
-     * 
+     *
      * @return array of Game models
      */
     public function getGames()
@@ -68,4 +68,3 @@ class GameMapper extends Mapper
         return $result;
     }
 }
-

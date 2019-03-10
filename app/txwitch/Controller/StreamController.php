@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Controller;
@@ -14,16 +14,16 @@ use Txwitch\Mapper\ChannelMapper;
 
 /**
  * StreamController Class
- * 
+ *
  * @package Txwitch\Controller
  */
 class StreamController
 {
     /**
      * DI Container
-     * 
+     *
      * @Inject
-     * @var ContainerInterface 
+     * @var ContainerInterface
      */
     protected $container;
     
@@ -36,21 +36,21 @@ class StreamController
     
     /**
      * StreamController constructor
-     * 
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
         $this->mapper = new StreamMapper(
-                $this->container->get('db'), 
-                $this->container->get('twitchApi')
+            $this->container->get('db'),
+            $this->container->get('twitchApi')
         );
     }
     
     /**
      * Method to control the action on route </streams>
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param array $args

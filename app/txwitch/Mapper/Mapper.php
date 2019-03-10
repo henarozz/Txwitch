@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Mapper;
@@ -11,29 +11,30 @@ use Txwitch\Component\TwitchAPI;
 
 /**
  * Abstract Mapper Class
- * 
+ *
  * @package Txwitch\Mapper
  */
-abstract class Mapper {
+abstract class Mapper
+{
     /**
      * DI Container
-     * 
+     *
      * @Inject
-     * @var EasyPDO 
+     * @var EasyPDO
      */
     protected $db;
     
     /**
      * DI Container
-     * 
+     *
      * @Inject
-     * @var TwitchAPI 
+     * @var TwitchAPI
      */
     protected $twitchApi;
     
     /**
      * Mapper constructor
-     * 
+     *
      * @param EasyPDO $db
      * @param TwitchAPI $twitchApi
      */

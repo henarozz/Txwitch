@@ -1,29 +1,29 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Component;
 
 /**
  * Security Component Class
- * 
+ *
  * @package Txwitch\Component
  */
 class Security
-{   
+{
+
     /**
      * Method to pass authentication by auth credentials
-     * 
+     *
      * @param array $trueAuthCredentials
      * @param array $userAuthCredentials
      * @return boolean
      */
     public function passAuth($trueAuthCredentials = [], $userAuthCredentials = [])
-    {   
-        if (
-                $trueAuthCredentials === $userAuthCredentials &&
+    {
+        if ($trueAuthCredentials === $userAuthCredentials &&
                 (!empty($trueAuthCredentials) && !empty($userAuthCredentials))
         ) {
             return true;
@@ -52,7 +52,7 @@ class Security
     
     /**
      * Method to check authorization
-     * 
+     *
      * @return boolean
      */
     public function isAuthed()

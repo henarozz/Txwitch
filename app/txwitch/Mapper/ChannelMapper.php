@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Mapper;
@@ -13,24 +13,24 @@ use Txwitch\Model\Channel;
 
 /**
  * ChannelMapper Class
- * 
+ *
  * @package Txwitch\Mapper
  */
 class ChannelMapper extends Mapper
 {
     /**
      * Database
-     * 
+     *
      * @Inject
-     * @var EasyPDO 
+     * @var EasyPDO
      */
     protected $db;
     
     /**
      * TwitchAPI
-     * 
+     *
      * @Inject
-     * @var TwitchAPI 
+     * @var TwitchAPI
      */
     protected $twitchApi;
     
@@ -48,11 +48,11 @@ class ChannelMapper extends Mapper
 
     /**
      * Method to get channel by <channelName>
-     * 
+     *
      * @return Channel model
      */
     public function getChannel($channelName, $userId)
-    { 
+    {
         $playlist = $this->twitchApi->getChannelPlaylist($channelName);
         
         $channelModel = new Channel($channelName, $userId);
@@ -63,7 +63,7 @@ class ChannelMapper extends Mapper
     
     /**
      * Method to get all favorite channels
-     * 
+     *
      * @return array of favorite channels
      */
     public function getFavoriteChannels()
@@ -78,7 +78,7 @@ class ChannelMapper extends Mapper
     
     /**
      * Method to add channel to favorites
-     * 
+     *
      * @param string $channelName
      * @param string $userId
      * @return array of data
@@ -96,7 +96,7 @@ class ChannelMapper extends Mapper
                 'responseCode' => '1',
                 'responseMessage' => 'Liked'
             ]];
-        } catch(\PDOException $exception) {
+        } catch (\PDOException $exception) {
             $data = ['data' => [
                 'responseCode' => '0',
                 'responseMessage' => 'Error'
@@ -109,19 +109,19 @@ class ChannelMapper extends Mapper
     
     /**
      * Method to delete channel from favorites
-     * 
+     *
      * @param string $channelName
      * @return array of data
      */
     public function deleteChannelFromFavorites($channelName)
     {
         try {
-            $this->db->delete('favorites', "channel=:user_channel" , array(':user_channel' => $channelName));
+            $this->db->delete('favorites', "channel=:user_channel", array(':user_channel' => $channelName));
             $data = ['data' => [
                 'responseCode' => '1',
                 'responseMessage' => 'Disliked'
             ]];
-        } catch(\PDOException $exception) {
+        } catch (\PDOException $exception) {
             $data = ['data' => [
                 'responseCode' => '0',
                 'responseMessage' => 'Error'
@@ -132,4 +132,3 @@ class ChannelMapper extends Mapper
         return $data;
     }
 }
-

@@ -1,14 +1,14 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Model;
 
 /**
  * Channel Model Class
- * 
+ *
  * @package Txwitch\Model
  */
 class Channel
@@ -33,7 +33,7 @@ class Channel
     
     /**
      * Channel Model constructor
-     * 
+     *
      * @param string $name
      * @param string $userId
      */
@@ -41,12 +41,11 @@ class Channel
     {
         $this->name = $name;
         $this->userId = $userId;
-        
     }
     
     /**
      * Getter method for <name> attribute
-     * 
+     *
      * @return string|null name of channel
      */
     public function getName()
@@ -56,7 +55,7 @@ class Channel
     
     /**
      * Getter method for <userId> attribute
-     * 
+     *
      * @return string
      */
     public function getUserId()
@@ -66,17 +65,17 @@ class Channel
     
     /**
      * Getter method for <playlist> attribute
-     * 
+     *
      * @return array playlist of channel
      */
     public function getPlaylist()
-    { 
+    {
         return $this->playlist;
     }
     
     /**
      * Setter method for <playlist> attribute
-     * 
+     *
      * @param array $playlist of channel
      */
     public function setPlaylist(array $playlist = [])
@@ -84,4 +83,3 @@ class Channel
         $this->playlist = $playlist;
     }
 }
-

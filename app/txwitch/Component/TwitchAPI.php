@@ -1,17 +1,18 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Component;
 
 /**
  * TwitchAPI Client Class
- * 
+ *
  * @package Txwitch\Component
  */
-class TwitchAPI {
+class TwitchAPI
+{
     
     /**
      *
@@ -21,7 +22,7 @@ class TwitchAPI {
     
     /**
      *
-     * @var GuzzleHttp\Client 
+     * @var GuzzleHttp\Client
      */
     private $httpClient;
     
@@ -57,7 +58,7 @@ class TwitchAPI {
 
     /**
      * TwitchAPI constructor
-     * 
+     *
      * @param array $settings
      * @param GuzzleHttp\Client $httpClient
      */
@@ -74,7 +75,7 @@ class TwitchAPI {
     
     /**
      * Method to get thumb size (width, height)
-     * 
+     *
      * @return array
      */
     public function getThumbSize()
@@ -84,7 +85,7 @@ class TwitchAPI {
     
     /**
      * Method to set thumb size (width, height)
-     * 
+     *
      * @param array $thumbSize
      */
     public function setThumbSize(array $thumbSize = [])
@@ -94,7 +95,7 @@ class TwitchAPI {
     
     /**
      * Method to get twitch top games (limit 100 from gameUrl)
-     * 
+     *
      * @return array
      */
     public function getTopGames()
@@ -118,7 +119,7 @@ class TwitchAPI {
     
     /**
      * Method-helper to get channel name from thumbnail url
-     * 
+     *
      * @param string $thumbnailUrl
      * @return string
      */
@@ -136,7 +137,7 @@ class TwitchAPI {
     
     /**
      * Method to get active streams
-     * 
+     *
      * @param string $gameId
      * @param string $lang
      * @return array
@@ -168,7 +169,7 @@ class TwitchAPI {
     
     /**
      * Method-helper to get API token and signature
-     * 
+     *
      * @param string $channelName
      * @return array
      */
@@ -186,7 +187,7 @@ class TwitchAPI {
     
     /**
      * Method to get playlist of channel
-     * 
+     *
      * @param type $channelName
      * @return array
      */
@@ -195,7 +196,7 @@ class TwitchAPI {
         $tokenAndSignature = $this->getChannelTokenAndSignature($channelName);
         
         $usherUrl = $this->usherUrl;
-        $random = rand(0,1E7);
+        $random = rand(0, 1E7);
         
         $requestUrl = str_replace('{user_channel}', $channelName, $usherUrl);
         $requestUrl = str_replace('{token}', $tokenAndSignature['token'], $requestUrl);

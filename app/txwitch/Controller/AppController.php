@@ -1,7 +1,7 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Controller;
@@ -13,36 +13,36 @@ use Txwitch\Component\Security;
 
 /**
  * AppController Class
- * 
+ *
  * @package Txwitch\Controller
  */
 class AppController
 {
     /**
      * DI Container
-     * 
+     *
      * @Inject
-     * @var ContainerInterface 
+     * @var ContainerInterface
      */
     protected $container;
     
     /**
      * Security component
      *
-     * @var Security 
+     * @var Security
      */
     private $security;
     
     /**
      * Settings array
      *
-     * @var array 
+     * @var array
      */
     private $settings;
 
     /**
      * AppController constructor
-     * 
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -54,7 +54,7 @@ class AppController
     
     /**
      * Method to control the actions on route </app/login>
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param array $args
@@ -67,9 +67,9 @@ class AppController
                 $view = $this->container->get('view');
                 
                 return $view->render(
-                        $response, 
-                        'login.phtml', 
-                        ['header' => 'Txwitch']
+                    $response,
+                    'login.phtml',
+                    ['header' => 'Txwitch']
                 );
                 break;
             case 'POST':
@@ -96,7 +96,7 @@ class AppController
     
     /**
      * Method to control the action on route </app/logout>
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param array $args
@@ -109,4 +109,3 @@ class AppController
         return $response->withStatus(302)->withHeader('Location', '/app/login');
     }
 }
-

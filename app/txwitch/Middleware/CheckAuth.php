@@ -13,7 +13,7 @@ use Txwitch\Component\Security;
 class CheckAuth
 {
     /**
-     * @var Psr\Container\ContainerInterface 
+     * @var Psr\Container\ContainerInterface
      */
     protected $container;
     

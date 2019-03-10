@@ -1,14 +1,14 @@
 <?php
 /**
  * Txwitch
- * 
+ *
  * @author Alexander Makhin <henarozz@gmail.com>
  */
 namespace Txwitch\Model;
 
 /**
  * Game Model Class
- * 
+ *
  * @package Txwitch\Model
  */
 class Game
@@ -44,7 +44,7 @@ class Game
     
     /**
      * Getter method for <id> attribute
-     * 
+     *
      * @return string
      */
     public function getId()
@@ -54,7 +54,7 @@ class Game
     
     /**
      * Getter method for <name> attribute
-     * 
+     *
      * @return string
      */
     public function getName()
@@ -64,7 +64,7 @@ class Game
     
     /**
      * Getter method for <boxArtUrl> attribute
-     * 
+     *
      * @return string
      */
     public function getBoxArtUrl()
@@ -74,7 +74,7 @@ class Game
     
     /**
      * Setter method for <boxArtUrl> attribute
-     * 
+     *
      * @param string $url
      */
     public function setBoxArtUrl($url)
@@ -82,4 +82,3 @@ class Game
         $this->boxArtUrl = $url;
     }
 }
-
