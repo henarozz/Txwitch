@@ -1,5 +1,5 @@
 {
-    "name": "henarozz/Txwitch",
+    "name": "henarozz/txwitch",
     "description": "Txwitch — web application to extract HLS links from Twitch.tv",
     "keywords": ["Txwitch", "twitchhls", "hls", "stream"],
     "homepage": "https://github.com/henarozz/Txwitch",
